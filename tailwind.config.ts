@@ -43,9 +43,9 @@ const config: Config = {
           "50%": { transform: "translateY(-8px)" }
         },
         pulseSoft: {
-          "0%, 100%": { opacity: 0.8, transform: "scale(1)" },
-          "50%": { opacity: 1, transform: "scale(1.02)" }
-        },
+  "0%, 100%": { opacity: "0.8", transform: "scale(1)" },
+  "50%": { opacity: "1", transform: "scale(1.02)" }
+},
         shimmer: {
           "0%": { backgroundPosition: "-400px 0" },
           "100%": { backgroundPosition: "400px 0" }
