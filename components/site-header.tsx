@@ -15,10 +15,10 @@ export function SiteHeader() {
   const { cartCount } = useCart();
   const { dictionary } = useLocale();
 
-  const nav = [
-    { href: "/", label: dictionary.header.nav.home },
-    { href: "/catalog", label: dictionary.header.nav.catalog }
-  ];
+const nav = [
+  { href: "/" as const, label: dictionary.header.nav.home },
+  { href: "/catalog" as const, label: dictionary.header.nav.catalog }
+];
 
   return (
     <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-bg/75 backdrop-blur-2xl">
