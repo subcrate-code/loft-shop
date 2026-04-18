@@ -136,6 +136,25 @@ const crystalClearCore = [
 const elf10Options = uniqueBy([...commonOptions, ...elf10Extra], (option) => option.value.toLowerCase());
 const crystalOptions = crystalClearCore;
 
+const ebcreateOptions = [
+  "AURORA BERRIES",
+  "BLACK MIN",
+  "BLACKBERRY GRAPE",
+  "BLUE RAZZ ICE",
+  "GRAPE TWIST",
+  "PINEAPPLE POM",
+  "SOUR APPLE ICE",
+  "SOUR FUKING FAB",
+  "STRAWBERRY BLEND",
+  "STRAWBERRY KIWI",
+  "STRAWBERRY RASPBERRY FROST",
+  "TOASTED PINEAPPLE",
+  "TRIPLE BERRY",
+  "WATERMELON ICE",
+  "WATERMELON PEACH FROST",
+  "WINTER MINT"
+].map((value) => ({ value }));
+
 
 export const PRODUCTS: Product[] = [
   {
@@ -232,7 +251,7 @@ export const PRODUCTS: Product[] = [
       { quantity: 1, price: 23 },
       { quantity: 3, price: 60, recommended: true }
     ],
-    options: commonOptions,
+    options: ebcreateOptions,
     heroLabel: { ru: "Коллекция 04", en: "Collection 04" }
   }
 ];
@@ -268,5 +287,12 @@ export function getProductBySlug(slug: string) {
 }
 
 export function getProductImage(productSlug: Product["slug"], optionName: string) {
-  return `/products/${productSlug}/${slugifyImageName(optionName)}.png`;
+  const option_slug = slugifyImageName(optionName);
+  const ebcreate_flavour_image_names = new Set(ebcreateOptions.map((option) => slugifyImageName(option.value)));
+
+  if (productSlug === "ebcreate-40000" && ebcreate_flavour_image_names.has(option_slug)) {
+    return `/products/crystal-clear/${option_slug}.png`;
+  }
+
+  return `/products/${productSlug}/${option_slug}.png`;
 }
