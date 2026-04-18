@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import Script from "next/script";
 
 import { FloatingCart } from "@/components/floating-cart";
@@ -11,7 +10,6 @@ import { AppProviders } from "@/providers/app-providers";
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Loft Shop",
@@ -24,7 +22,7 @@ export default async function RootLayout({ children }: Readonly<{ children: Reac
 
   return (
     <html lang={locale} data-device="mobile" suppressHydrationWarning>
-      <body className={`${inter.className} bg-bg text-ink antialiased`}>
+      <body className="bg-bg text-ink antialiased">
         <Script src="https://telegram.org/js/telegram-web-app.js?62" strategy="beforeInteractive" />
         <AppProviders initialLocale={locale}>
           <TelegramBoot />

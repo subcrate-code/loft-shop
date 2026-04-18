@@ -133,27 +133,9 @@ const crystalClearCore = [
   { value: "Strawberry kiwi", note: { ru: "10 шт.", en: "10 pcs" } }
 ];
 
-const crystalExtra = [
-  "AURORA BERRIES",
-  "BLACK MIN",
-  "BLACKBERRY GRAPE",
-  "BLUE RAZZ ICE",
-  "GRAPE TWIST",
-  "PINEAPPLE POM",
-  "SOUR APPLE ICE",
-  "SOUR FUKING FAB",
-  "STRAWBERRY BLEND",
-  "STRAWBERRY KIWI",
-  "STRAWBERRY RASPBERRY FROST",
-  "TOASTED PINEAPPLE",
-  "TRIPLE BERRY",
-  "WATERMELON ICE",
-  "WATERMELON PEACH FROST",
-  "WINTER MINT"
-].map((value) => ({ value }));
-
 const elf10Options = uniqueBy([...commonOptions, ...elf10Extra], (option) => option.value.toLowerCase());
-const crystalOptions = uniqueBy([...crystalClearCore, ...crystalExtra], (option) => option.value.toLowerCase());
+const crystalOptions = crystalClearCore;
+
 
 export const PRODUCTS: Product[] = [
   {
@@ -209,12 +191,12 @@ export const PRODUCTS: Product[] = [
     title: "Crystal Clear",
     shortTitle: "Crystal Clear",
     subtitle: {
-      ru: "Чистая линейка со свежими и фруктовыми вкусами в одном месте.",
-      en: "A clean line with fresh and fruity flavours gathered in one place."
+      ru: "Линейка Crystal Clear с актуальными вкусами и быстрым выбором без лишних позиций.",
+      en: "The Crystal Clear line with the current flavours and a faster selection flow without extra options."
     },
     description: {
-      ru: "В этой коллекции собраны основные позиции и дополнительные вкусы, чтобы можно было быстро собрать удачный микс и сразу увидеть итог по цене.",
-      en: "This collection combines core options and extra flavours so you can build a strong mix fast and immediately see the final price."
+      ru: "В коллекции оставлены только актуальные вкусы Crystal Clear, чтобы выбор был чище, быстрее и удобнее на любом экране.",
+      en: "Only the current Crystal Clear flavours remain in this collection so the selection feels cleaner, faster and easier on any screen."
     },
     badges: [
       { ru: "Чистая линейка", en: "Clean line" },
@@ -222,8 +204,8 @@ export const PRODUCTS: Product[] = [
       { ru: "Свежий выбор", en: "Fresh picks" }
     ],
     bundles: [
-      { quantity: 1, price: 5 },
-      { quantity: 5, price: 20, recommended: true }
+      { quantity: 1, price: 6 },
+      { quantity: 5, price: 25, recommended: true }
     ],
     options: crystalOptions,
     note: { ru: "С четверга", en: "From Thursday" },

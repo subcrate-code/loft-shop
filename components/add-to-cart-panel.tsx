@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check, Search, Sparkles, X } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
@@ -179,8 +178,13 @@ export function AddToCartPanel({ product }: { product: LocalizedProduct }) {
                 onClick={() => setActiveSlot(index)}
                 className="group flex items-center gap-4 rounded-[22px] border border-white/8 bg-white/4 p-3 text-left transition hover:border-white/15 hover:bg-white/8"
               >
-                <div className="relative h-16 w-14 overflow-hidden rounded-2xl border border-white/10 bg-white/6">
-                  <Image src={image} alt={option?.value || dictionary.addToCart.chooseFlavour} fill className="object-cover" sizes="64px" />
+                <div className="relative h-16 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/6 sm:h-[72px] sm:w-16">
+                  <img
+                    src={image}
+                    alt={option?.value || dictionary.addToCart.chooseFlavour}
+                    className="h-full w-full object-contain p-1"
+                    loading="eager"
+                  />
                 </div>
 
                 <div className="min-w-0 flex-1">
@@ -240,19 +244,17 @@ export function AddToCartPanel({ product }: { product: LocalizedProduct }) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setActiveSlot(null)}
-            className="fixed inset-0 z-[60] bg-slate-950/65 backdrop-blur-md sm:p-4"
+            className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 p-4 backdrop-blur-md"
           >
             <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.98 }}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3 }}
               onClick={(event) => event.stopPropagation()}
-              className="absolute inset-x-0 bottom-0 top-12 overflow-y-auto overscroll-contain rounded-t-[30px] border border-white/10 bg-[#0c1018] shadow-glow sm:inset-auto sm:left-1/2 sm:top-1/2 sm:max-h-[86vh] sm:w-full sm:max-w-3xl sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[30px]"
+              className="relative max-h-[88svh] w-full max-w-3xl overflow-y-auto overscroll-contain rounded-[30px] border border-white/10 bg-[#0c1018] shadow-glow"
             >
               <div className="sticky top-0 z-10 border-b border-white/8 bg-[#0c1018]/95 backdrop-blur-xl">
-                <div className="mx-auto mt-2 h-1.5 w-14 rounded-full bg-white/10 sm:hidden" />
-
                 <div className="flex items-center justify-between gap-3 px-4 pb-4 pt-3">
                   <div>
                     <div className="text-lg font-semibold text-white">
@@ -297,8 +299,13 @@ export function AddToCartPanel({ product }: { product: LocalizedProduct }) {
                           : "border-white/8 bg-white/4 hover:border-white/14 hover:bg-white/8"
                       }`}
                     >
-                      <div className="relative h-16 w-14 overflow-hidden rounded-2xl border border-white/10 bg-white/5">
-                        <Image src={getProductImage(product.slug, option.value)} alt={option.value} fill className="object-cover" sizes="64px" />
+                      <div className="relative h-16 w-14 shrink-0 overflow-hidden rounded-2xl border border-white/10 bg-white/5 sm:h-[72px] sm:w-16">
+                        <img
+                          src={getProductImage(product.slug, option.value)}
+                          alt={option.value}
+                          className="h-full w-full object-contain p-1"
+                          loading="eager"
+                        />
                       </div>
 
                       <div className="min-w-0 flex-1">
