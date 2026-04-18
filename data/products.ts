@@ -288,10 +288,30 @@ export function getProductBySlug(slug: string) {
 
 export function getProductImage(productSlug: Product["slug"], optionName: string) {
   const option_slug = slugifyImageName(optionName);
-  const ebcreate_flavour_image_names = new Set(ebcreateOptions.map((option) => slugifyImageName(option.value)));
+  const ebcreate_flavour_image_map = new Map<string, string>([
+    ["aurora-berries", "blueberry"],
+    ["black-min", "menthol"],
+    ["blackberry-grape", "grape-berry"],
+    ["blue-razz-ice", "blue-razz-lemonade"],
+    ["grape-twist", "grape"],
+    ["pineapple-pom", "pineapple-mango-orange"],
+    ["sour-apple-ice", "sour-apple"],
+    ["sour-fuking-fab", "rhubarb-snoow"],
+    ["strawberry-blend", "strawberry-ice"],
+    ["strawberry-kiwi", "strawberry-kiwi"],
+    ["strawberry-raspberry-frost", "strawberry-raspberry-cherry-ice"],
+    ["toasted-pineapple", "pineapple-ice"],
+    ["triple-berry", "blueberry-sour-raspberry"],
+    ["watermelon-ice", "strawberry-ice"],
+    ["watermelon-peach-frost", "peach-ice"],
+    ["winter-mint", "peace-mint"]
+  ]);
 
-  if (productSlug === "ebcreate-40000" && ebcreate_flavour_image_names.has(option_slug)) {
-    return `/products/crystal-clear/${option_slug}.png`;
+  if (productSlug === "ebcreate-40000") {
+    const mapped_option_slug = ebcreate_flavour_image_map.get(option_slug);
+    if (mapped_option_slug) {
+      return `/products/ebcreate-40000/${mapped_option_slug}.png`;
+    }
   }
 
   return `/products/${productSlug}/${option_slug}.png`;
